@@ -26,6 +26,7 @@
   const rSafeEl        = document.getElementById('rSafe');
   const rSharesEl      = document.getElementById('rShares');
   const rGainEl        = document.getElementById('rGain');
+  const rTrailingEl    = document.getElementById('rTrailing');
   const resetBtn       = document.getElementById('resetBtn');
   const presetBtns     = document.querySelectorAll('.preset-btn');
 
@@ -85,6 +86,9 @@
     var sharesLabel = shares !== 1 ? ' \u00d7 ' + shares.toLocaleString() + ' shares' : '';
     rGainEl.textContent = sign + '$' + gainTotal.toFixed(2) + ' (' + gainPct.toFixed(1) + '%' + sharesLabel + ')';
     rGainEl.className   = 'stat-val ' + (gainTotal >= 0 ? 'green' : 'red');
+
+    var trailingPct = (current - stop) / current * 100;
+    rTrailingEl.textContent = trailingPct.toFixed(2) + '% below current price';
 
     resultCard.classList.add('show');
   }
