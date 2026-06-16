@@ -1,0 +1,381 @@
+/* ============================================================
+   Stop Price Calculator — style.css
+   Add new page styles below existing sections.
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   1. Reset & tokens
+---------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-page:       #f0f0ed;
+  --bg-card:       #ffffff;
+  --bg-secondary:  #f5f4f0;
+  --text-primary:  #1a1a18;
+  --text-secondary:#6b6b68;
+  --border:        rgba(0,0,0,0.12);
+  --border-em:     rgba(0,0,0,0.22);
+  --blue:          #378ADD;
+  --blue-dark:     #185FA5;
+  --blue-darker:   #0C447C;
+  --blue-light:    #E6F1FB;
+  --green:         #3B6D11;
+  --red:           #A32D2D;
+  --radius-sm:     6px;
+  --radius-md:     8px;
+  --radius-lg:     12px;
+  --shadow-focus:  0 0 0 3px rgba(55,138,221,0.18);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-page:       #1a1a18;
+    --bg-card:       #252523;
+    --bg-secondary:  #2e2e2b;
+    --text-primary:  #f0efe9;
+    --text-secondary:#9b9b96;
+    --border:        rgba(255,255,255,0.10);
+    --border-em:     rgba(255,255,255,0.20);
+    --blue-dark:     #5ba3e8;
+    --blue-darker:   #85B7EB;
+    --blue-light:    #042C53;
+    --green:         #7ab84a;
+    --red:           #e07070;
+  }
+}
+
+/* ----------------------------------------------------------
+   2. Base
+---------------------------------------------------------- */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1.5rem 1rem 3rem;
+  line-height: 1.5;
+}
+
+/* ----------------------------------------------------------
+   3. Layout
+---------------------------------------------------------- */
+.app {
+  width: 100%;
+  max-width: 480px;
+}
+
+/* ----------------------------------------------------------
+   4. Header
+---------------------------------------------------------- */
+.header {
+  text-align: center;
+  margin-bottom: 1.75rem;
+  padding-top: 0.5rem;
+}
+
+.header h1 {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.header h1 .ti {
+  font-size: 22px;
+  vertical-align: -3px;
+  margin-right: 6px;
+  color: var(--blue);
+}
+
+.header p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* ----------------------------------------------------------
+   5. Card
+---------------------------------------------------------- */
+.card {
+  background: var(--bg-card);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+/* ----------------------------------------------------------
+   6. Fields & labels
+---------------------------------------------------------- */
+.field {
+  margin-bottom: 1.25rem;
+}
+.field:last-child {
+  margin-bottom: 0;
+}
+
+.field label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.field label .ti {
+  font-size: 14px;
+}
+
+.optional-tag {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border: 0.5px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 6px;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-left: 2px;
+}
+
+/* ----------------------------------------------------------
+   7. Inputs
+---------------------------------------------------------- */
+.input-wrap {
+  position: relative;
+}
+
+.input-prefix {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: var(--text-secondary);
+  pointer-events: none;
+  user-select: none;
+}
+
+input[type="number"] {
+  width: 100%;
+  height: 54px;
+  border: 0.5px solid var(--border-em);
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 20px;
+  font-weight: 500;
+  font-family: inherit;
+  padding: 0 16px 0 36px;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input[type="number"].no-prefix {
+  padding-left: 16px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: var(--shadow-focus);
+}
+
+/* ----------------------------------------------------------
+   8. Safeline presets & slider
+---------------------------------------------------------- */
+.preset-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 1.25rem;
+}
+
+.preset-btn {
+  height: 50px;
+  border: 0.5px solid var(--border-em);
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s, color 0.12s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.preset-btn:active {
+  transform: scale(0.96);
+}
+
+.preset-btn.active {
+  background: var(--blue-light);
+  border-color: var(--blue);
+  color: var(--blue-dark);
+}
+
+.slider-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.slider-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.slider-value {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--blue-dark);
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 4px;
+  accent-color: var(--blue);
+  cursor: pointer;
+}
+
+/* ----------------------------------------------------------
+   9. Result card
+---------------------------------------------------------- */
+.result-card {
+  background: var(--bg-card);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  pointer-events: none;
+}
+
+.result-card.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.result-label {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.result-price {
+  font-size: 48px;
+  font-weight: 500;
+  color: var(--blue-dark);
+  line-height: 1;
+  margin-bottom: 1rem;
+  transition: opacity 0.12s;
+}
+
+.result-price.updating { opacity: 0.4; }
+
+.result-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.result-stat {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+}
+
+.result-stat--wide {
+  grid-column: span 2;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.stat-val {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: opacity 0.12s;
+}
+
+.stat-val.updating { opacity: 0.4; }
+.stat-val.green    { color: var(--green); }
+.stat-val.red      { color: var(--red); }
+
+/* ----------------------------------------------------------
+   10. Reset button
+---------------------------------------------------------- */
+.reset-btn {
+  width: 100%;
+  height: 46px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 0.12s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.reset-btn:hover  { background: var(--bg-secondary); }
+.reset-btn:active { transform: scale(0.98); }
+
+/* ----------------------------------------------------------
+   11. Footer
+---------------------------------------------------------- */
+.footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* ----------------------------------------------------------
+   12. Responsive — desktop enhancements
+---------------------------------------------------------- */
+@media (min-width: 600px) {
+  body {
+    align-items: center;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .header h1 { font-size: 26px; }
+  .result-price { font-size: 56px; }
+}
