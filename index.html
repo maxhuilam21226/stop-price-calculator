@@ -9,7 +9,7 @@
   <meta property="og:type" content="website">
   <title>Stop Price Calculator</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.0.0/tabler-icons.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
   <div class="app">
@@ -64,9 +64,7 @@
     <div class="result-card" id="resultCard" aria-live="polite">
       <div class="result-label-row">
         <div class="result-label">Stop price</div>
-        <button class="help-btn" id="helpStopBtn" aria-label="Explain stop price">
-          <i class="ti ti-info-circle" aria-hidden="true"></i>
-        </button>
+        <button class="help-btn" id="helpStopBtn" aria-label="Explain stop price">?</button>
       </div>
       <div class="result-price" id="resultPrice">—</div>
       <div class="help-drawer" id="helpStopDrawer">
@@ -88,9 +86,7 @@
         <div class="result-stat result-stat--wide">
           <div class="stat-label-row">
             <div class="stat-label">Trailing stop %</div>
-            <button class="help-btn" id="helpTrailingBtn" aria-label="Explain trailing stop %">
-              <i class="ti ti-info-circle" aria-hidden="true"></i>
-            </button>
+            <button class="help-btn" id="helpTrailingBtn" aria-label="Explain trailing stop %">?</button>
           </div>
           <div class="stat-val" id="rTrailing">—</div>
           <div class="help-drawer" id="helpTrailingDrawer">
@@ -116,6 +112,6 @@
     </footer>
   </div>
 
-  <script src="js/calculator.js?v=2"></script>
+  <script src="js/calculator.js?v=3"></script>
 </body>
 </html>
