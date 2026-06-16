@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="description" content="Calculate your stop price instantly. Protect your trading gains with a smart exit price based on your cost base, current price, and safeline %.">
+  <meta name="description" content="Calculate your stop price instantly. Protect your trading gains with a smart exit price based on your cost base, current price, and profit lock-in %.">
   <meta property="og:title" content="Stop Price Calculator">
   <meta property="og:description" content="Protect your trading gains with a smart stop price calculator.">
   <meta property="og:type" content="website">
@@ -46,7 +46,7 @@
       </div>
 
       <div class="field">
-        <label><i class="ti ti-shield-check" aria-hidden="true"></i>Safeline %</label>
+        <label><i class="ti ti-shield-check" aria-hidden="true"></i>Profit Lock-in %</label>
         <div class="preset-row">
           <button class="preset-btn" data-val="75">75%</button>
           <button class="preset-btn" data-val="85">85%</button>
@@ -57,7 +57,7 @@
           <span class="slider-label">Custom</span>
           <span class="slider-value" id="sliderVal">90%</span>
         </div>
-        <input type="range" id="safelineSlider" min="1" max="99" step="1" value="90" aria-label="Safeline percentage">
+        <input type="range" id="safelineSlider" min="1" max="99" step="1" value="90" aria-label="Profit lock-in percentage">
       </div>
     </div>
 
@@ -69,10 +69,10 @@
       <div class="result-price" id="resultPrice">—</div>
       <div class="help-drawer" id="helpStopDrawer">
         <div class="help-drawer-inner">
-          <p>The price at which a stop-loss order triggers. It locks in a portion of your profit based on the safeline %.</p>
+          <p>The price at which a stop-loss order triggers. It locks in a portion of your profit based on the profit lock-in %.</p>
           <div class="help-example">
             <div class="help-eg-label">Example</div>
-            $90 cost · $100 current · 95% safeline<br>
+            $90 cost · $100 current · 95% profit lock-in<br>
             → $90 + (95% × $10) = <strong>$99.50</strong>
           </div>
         </div>
@@ -80,7 +80,7 @@
       <div class="result-grid">
         <div class="result-stat"><div class="stat-label">Cost base</div><div class="stat-val" id="rCost">—</div></div>
         <div class="result-stat"><div class="stat-label">Current price</div><div class="stat-val" id="rCurrent">—</div></div>
-        <div class="result-stat"><div class="stat-label">Safeline</div><div class="stat-val" id="rSafe">90%</div></div>
+        <div class="result-stat"><div class="stat-label">Profit Lock-in</div><div class="stat-val" id="rSafe">90%</div></div>
         <div class="result-stat"><div class="stat-label">Shares</div><div class="stat-val" id="rShares">1</div></div>
         <div class="result-stat result-stat--wide"><div class="stat-label">Gain protected</div><div class="stat-val" id="rGain">—</div></div>
         <div class="result-stat result-stat--wide">
@@ -112,6 +112,6 @@
     </footer>
   </div>
 
-  <script src="js/calculator.js?v=4"></script>
+  <script src="js/calculator.js?v=5"></script>
 </body>
 </html>
