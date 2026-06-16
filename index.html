@@ -62,15 +62,49 @@
     </div>
 
     <div class="result-card" id="resultCard" aria-live="polite">
-      <div class="result-label">Stop price</div>
+      <div class="result-label-row">
+        <div class="result-label">Stop price</div>
+        <button class="help-btn" id="helpStopBtn" aria-label="Explain stop price">
+          <i class="ti ti-info-circle" aria-hidden="true"></i>
+        </button>
+      </div>
       <div class="result-price" id="resultPrice">—</div>
+      <div class="help-drawer" id="helpStopDrawer">
+        <div class="help-drawer-inner">
+          <p>The price at which a stop-loss order triggers. It locks in a portion of your profit based on the safeline %.</p>
+          <div class="help-example">
+            <div class="help-eg-label">Example</div>
+            $90 cost · $100 current · 95% safeline<br>
+            → $90 + (95% × $10) = <strong>$99.50</strong>
+          </div>
+        </div>
+      </div>
       <div class="result-grid">
         <div class="result-stat"><div class="stat-label">Cost base</div><div class="stat-val" id="rCost">—</div></div>
         <div class="result-stat"><div class="stat-label">Current price</div><div class="stat-val" id="rCurrent">—</div></div>
         <div class="result-stat"><div class="stat-label">Safeline</div><div class="stat-val" id="rSafe">90%</div></div>
         <div class="result-stat"><div class="stat-label">Shares</div><div class="stat-val" id="rShares">1</div></div>
         <div class="result-stat result-stat--wide"><div class="stat-label">Gain protected</div><div class="stat-val" id="rGain">—</div></div>
-        <div class="result-stat result-stat--wide"><div class="stat-label">Trailing stop %</div><div class="stat-val" id="rTrailing">—</div></div>
+        <div class="result-stat result-stat--wide">
+          <div class="stat-label-row">
+            <div class="stat-label">Trailing stop %</div>
+            <button class="help-btn" id="helpTrailingBtn" aria-label="Explain trailing stop %">
+              <i class="ti ti-info-circle" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="stat-val" id="rTrailing">—</div>
+          <div class="help-drawer" id="helpTrailingDrawer">
+            <div class="help-drawer-inner">
+              <p>Brokers ask for a % below the current price when you submit the order — not a fixed price. This converts your stop price into that %.</p>
+              <div class="help-example">
+                <div class="help-eg-label">Example</div>
+                $100 current · $99.50 stop price<br>
+                → ($100 − $99.50) ÷ $100 = <strong>0.50%</strong><br>
+                Enter <strong>0.50%</strong> in your broker's trailing stop field.
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <button class="reset-btn" id="resetBtn" aria-label="Reset all fields">
         <i class="ti ti-refresh" aria-hidden="true"></i> Reset

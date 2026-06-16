@@ -368,7 +368,73 @@ input[type="range"] {
 }
 
 /* ----------------------------------------------------------
-   12. Responsive — desktop enhancements
+   12. Help buttons & drawers
+---------------------------------------------------------- */
+.result-label-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.result-label-row .result-label { margin-bottom: 0; }
+
+.stat-label-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 3px;
+}
+.stat-label-row .stat-label { margin-bottom: 0; }
+
+.help-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0;
+  font-size: 15px;
+  line-height: 1;
+  opacity: 0.6;
+  transition: opacity 0.15s, color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+}
+.help-btn:hover,
+.help-btn.active { opacity: 1; color: var(--blue); }
+
+.help-drawer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.help-drawer.open { max-height: 300px; }
+
+.help-drawer-inner {
+  padding: 10px 0 6px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.help-example {
+  margin-top: 8px;
+  border-left: 2px solid var(--blue);
+  padding: 5px 10px;
+  font-size: 12.5px;
+  line-height: 1.65;
+}
+
+.help-eg-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--blue-dark);
+  margin-bottom: 3px;
+}
+
+/* ----------------------------------------------------------
+   13. Responsive — desktop enhancements
 ---------------------------------------------------------- */
 @media (min-width: 600px) {
   body {

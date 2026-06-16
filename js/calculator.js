@@ -25,9 +25,13 @@
   const rCurrentEl     = document.getElementById('rCurrent');
   const rSafeEl        = document.getElementById('rSafe');
   const rSharesEl      = document.getElementById('rShares');
-  const rGainEl        = document.getElementById('rGain');
-  const rTrailingEl    = document.getElementById('rTrailing');
-  const resetBtn       = document.getElementById('resetBtn');
+  const rGainEl           = document.getElementById('rGain');
+  const rTrailingEl       = document.getElementById('rTrailing');
+  const helpStopBtn       = document.getElementById('helpStopBtn');
+  const helpStopDrawer    = document.getElementById('helpStopDrawer');
+  const helpTrailingBtn   = document.getElementById('helpTrailingBtn');
+  const helpTrailingDrawer = document.getElementById('helpTrailingDrawer');
+  const resetBtn          = document.getElementById('resetBtn');
   const presetBtns     = document.querySelectorAll('.preset-btn');
 
   /* ----------------------------------------------------------
@@ -104,11 +108,20 @@
   /* ----------------------------------------------------------
      Reset
   ---------------------------------------------------------- */
+  function toggleDrawer(btn, drawer) {
+    var open = drawer.classList.toggle('open');
+    btn.classList.toggle('active', open);
+  }
+
   function resetAll() {
     costBaseEl.value     = '';
     currentPriceEl.value = '';
     numSharesEl.value    = '';
     resultCard.classList.remove('show');
+    helpStopDrawer.classList.remove('open');
+    helpStopBtn.classList.remove('active');
+    helpTrailingDrawer.classList.remove('open');
+    helpTrailingBtn.classList.remove('active');
     setSafeline(90);
   }
 
@@ -130,6 +143,8 @@
   });
 
   resetBtn.addEventListener('click', resetAll);
+  helpStopBtn.addEventListener('click', function () { toggleDrawer(helpStopBtn, helpStopDrawer); });
+  helpTrailingBtn.addEventListener('click', function () { toggleDrawer(helpTrailingBtn, helpTrailingDrawer); });
 
   /* ----------------------------------------------------------
      Init
