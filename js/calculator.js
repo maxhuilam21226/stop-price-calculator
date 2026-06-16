@@ -88,7 +88,7 @@
 
     var sign        = gainTotal >= 0 ? '+' : '';
     var sharesLabel = shares !== 1 ? ' \u00d7 ' + shares.toLocaleString() + ' shares' : '';
-    rGainEl.textContent = sign + '$' + gainTotal.toFixed(2) + ' (' + gainPct.toFixed(1) + '%' + sharesLabel + ')';
+    rGainEl.textContent = sign + '$' + gainTotal.toFixed(2) + ' (' + gainPct.toFixed(1) + '% ROI on cost' + sharesLabel + ')';
     rGainEl.className   = 'stat-val ' + (gainTotal >= 0 ? 'green' : 'red');
 
     var trailingPct = (current - stop) / current * 100;
