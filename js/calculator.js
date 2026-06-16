@@ -27,9 +27,11 @@
   const rSharesEl      = document.getElementById('rShares');
   const rGainEl           = document.getElementById('rGain');
   const rTrailingEl       = document.getElementById('rTrailing');
-  const helpStopBtn       = document.getElementById('helpStopBtn');
-  const helpStopDrawer    = document.getElementById('helpStopDrawer');
-  const helpTrailingBtn   = document.getElementById('helpTrailingBtn');
+  const helpLockInBtn      = document.getElementById('helpLockInBtn');
+  const helpLockInDrawer   = document.getElementById('helpLockInDrawer');
+  const helpStopBtn        = document.getElementById('helpStopBtn');
+  const helpStopDrawer     = document.getElementById('helpStopDrawer');
+  const helpTrailingBtn    = document.getElementById('helpTrailingBtn');
   const helpTrailingDrawer = document.getElementById('helpTrailingDrawer');
   const resetBtn          = document.getElementById('resetBtn');
   const presetBtns     = document.querySelectorAll('.preset-btn');
@@ -118,6 +120,8 @@
     currentPriceEl.value = '';
     numSharesEl.value    = '';
     resultCard.classList.remove('show');
+    helpLockInDrawer.classList.remove('open');
+    helpLockInBtn.classList.remove('active');
     helpStopDrawer.classList.remove('open');
     helpStopBtn.classList.remove('active');
     helpTrailingDrawer.classList.remove('open');
@@ -143,6 +147,7 @@
   });
 
   resetBtn.addEventListener('click', resetAll);
+  helpLockInBtn.addEventListener('click', function (e) { e.preventDefault(); toggleDrawer(helpLockInBtn, helpLockInDrawer); });
   helpStopBtn.addEventListener('click', function () { toggleDrawer(helpStopBtn, helpStopDrawer); });
   helpTrailingBtn.addEventListener('click', function () { toggleDrawer(helpTrailingBtn, helpTrailingDrawer); });
 

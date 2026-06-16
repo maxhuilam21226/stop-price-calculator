@@ -46,7 +46,21 @@
       </div>
 
       <div class="field">
-        <label><i class="ti ti-shield-check" aria-hidden="true"></i>Profit Lock-in %</label>
+        <label>
+          <i class="ti ti-shield-check" aria-hidden="true"></i>Profit Lock-in %
+          <button class="help-btn" id="helpLockInBtn" aria-label="Explain profit lock-in %">?</button>
+        </label>
+        <div class="help-drawer" id="helpLockInDrawer">
+          <div class="help-drawer-inner">
+            <p>This % is how much of your <strong>profit</strong> you want to protect — not a % of the current price.</p>
+            <div class="help-example">
+              <div class="help-eg-label">Example</div>
+              $90 cost · $100 current → profit = $10<br>
+              95% lock-in → protect 95% × $10 = <strong>$9.50</strong><br>
+              Stop price = $90 + $9.50 = <strong>$99.50</strong>
+            </div>
+          </div>
+        </div>
         <div class="preset-row">
           <button class="preset-btn" data-val="75">75%</button>
           <button class="preset-btn" data-val="85">85%</button>
@@ -112,6 +126,6 @@
     </footer>
   </div>
 
-  <script src="js/calculator.js?v=5"></script>
+  <script src="js/calculator.js?v=6"></script>
 </body>
 </html>
