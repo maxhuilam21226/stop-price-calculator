@@ -10,6 +10,8 @@
   ---------------------------------------------------------- */
   let safeline = 90;
   let debounceTimer = null;
+  let lastStopPrice = null;
+  let lastTrailingPct = null;
 
   /* ----------------------------------------------------------
      DOM refs
@@ -27,6 +29,8 @@
   const rSharesEl      = document.getElementById('rShares');
   const rGainEl           = document.getElementById('rGain');
   const rTrailingEl       = document.getElementById('rTrailing');
+  const copyStopBtn        = document.getElementById('copyStopBtn');
+  const copyTrailingBtn    = document.getElementById('copyTrailingBtn');
   const helpLockInBtn      = document.getElementById('helpLockInBtn');
   const helpLockInDrawer   = document.getElementById('helpLockInDrawer');
   const helpStopBtn        = document.getElementById('helpStopBtn');
@@ -95,6 +99,8 @@
 
     var trailingPct = (current - stop) / current * 100;
     rTrailingEl.textContent = trailingPct.toFixed(2) + '% below current price';
+    lastStopPrice  = stop.toFixed(2);
+    lastTrailingPct = trailingPct.toFixed(2);
 
     resultCard.classList.add('show');
   }
@@ -110,6 +116,18 @@
   /* ----------------------------------------------------------
      Reset
   ---------------------------------------------------------- */
+  function copyValue(btn, value) {
+    if (!value) return;
+    navigator.clipboard.writeText(value).then(function () {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = 'Copy';
+        btn.classList.remove('copied');
+      }, 1500);
+    });
+  }
+
   function toggleDrawer(btn, drawer) {
     var open = drawer.classList.toggle('open');
     btn.classList.toggle('active', open);
@@ -147,6 +165,8 @@
   });
 
   resetBtn.addEventListener('click', resetAll);
+  copyStopBtn.addEventListener('click', function () { copyValue(copyStopBtn, lastStopPrice); });
+  copyTrailingBtn.addEventListener('click', function () { copyValue(copyTrailingBtn, lastTrailingPct); });
   helpLockInBtn.addEventListener('click', function (e) { e.preventDefault(); toggleDrawer(helpLockInBtn, helpLockInDrawer); });
   helpStopBtn.addEventListener('click', function () { toggleDrawer(helpStopBtn, helpStopDrawer); });
   helpTrailingBtn.addEventListener('click', function () { toggleDrawer(helpTrailingBtn, helpTrailingDrawer); });

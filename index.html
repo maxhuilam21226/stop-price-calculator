@@ -9,7 +9,7 @@
   <meta property="og:type" content="website">
   <title>Stop Price Calculator</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.0.0/tabler-icons.min.css">
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
   <div class="app">
@@ -80,7 +80,10 @@
         <div class="result-label">Stop price</div>
         <button class="help-btn" id="helpStopBtn" aria-label="Explain stop price">?</button>
       </div>
-      <div class="result-price" id="resultPrice">—</div>
+      <div class="result-price-row">
+        <div class="result-price" id="resultPrice">—</div>
+        <button class="copy-btn" id="copyStopBtn" aria-label="Copy stop price">Copy</button>
+      </div>
       <div class="help-drawer" id="helpStopDrawer">
         <div class="help-drawer-inner">
           <p>The price at which a stop-loss order triggers. It locks in a portion of your profit based on the profit lock-in %.</p>
@@ -102,7 +105,10 @@
             <div class="stat-label">Trailing stop %</div>
             <button class="help-btn" id="helpTrailingBtn" aria-label="Explain trailing stop %">?</button>
           </div>
-          <div class="stat-val" id="rTrailing">—</div>
+          <div class="stat-val-row">
+            <div class="stat-val" id="rTrailing">—</div>
+            <button class="copy-btn" id="copyTrailingBtn" aria-label="Copy trailing stop %">Copy</button>
+          </div>
           <div class="help-drawer" id="helpTrailingDrawer">
             <div class="help-drawer-inner">
               <p>Brokers ask for a % below the current price when you submit the order — not a fixed price. This converts your stop price into that %.</p>
@@ -126,6 +132,6 @@
     </footer>
   </div>
 
-  <script src="js/calculator.js?v=6"></script>
+  <script src="js/calculator.js?v=7"></script>
 </body>
 </html>
