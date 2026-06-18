@@ -154,12 +154,20 @@
   currentPriceEl.addEventListener('input', onInput);
   numSharesEl.addEventListener('input', onInput);
 
+  function blurActiveInput() {
+    if (document.activeElement && document.activeElement.tagName === 'INPUT') {
+      document.activeElement.blur();
+    }
+  }
+
   sliderEl.addEventListener('input', function () {
+    blurActiveInput();
     setSafeline(sliderEl.value);
   });
 
   presetBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
+      blurActiveInput();
       setSafeline(btn.dataset.val);
     });
   });
