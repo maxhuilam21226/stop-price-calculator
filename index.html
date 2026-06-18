@@ -8,8 +8,29 @@
   <meta property="og:description" content="Protect your trading gains with a smart stop price calculator.">
   <meta property="og:type" content="website">
   <title>Stop Price Calculator</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#378ADD">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Stop Price">
+  <link rel="apple-touch-icon" href="icon.svg">
+
+  <!--
+  ═══════════════════════════════════════════════════════
+  GOOGLE ADSENSE — uncomment when your account is approved
+  1. Sign up at https://adsense.google.com
+  2. Add this site and get your publisher ID (ca-pub-XXXX)
+  3. Create an ad unit and get the slot ID
+  4. Replace the two XXXXXXXX placeholders below and uncomment
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  ═══════════════════════════════════════════════════════
+  -->
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.0.0/tabler-icons.min.css">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
   <div class="app">
@@ -127,11 +148,83 @@
       </button>
     </div>
 
+    <!--
+    ═══════════════════════════════════════════════════════
+    GOOGLE ADSENSE AD UNIT — uncomment when approved
+    Replace ca-pub-XXXXXXXX and the slot ID with your values.
+
+    <div class="ad-unit">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    ═══════════════════════════════════════════════════════
+    -->
+
     <footer class="footer">
+      <a class="bmc-btn" href="https://buymeacoffee.com/YOUR_USERNAME" target="_blank" rel="noopener noreferrer">
+        ☕ Buy me a coffee
+      </a>
       <p>Results are estimates only. Not financial advice.</p>
     </footer>
   </div>
 
-  <script src="js/calculator.js?v=7"></script>
+  <!-- Add to Home Screen banner -->
+  <div class="install-banner" id="installBanner" role="banner" aria-live="polite">
+    <span class="install-banner-text" id="installText">Add to your home screen for quick access</span>
+    <button class="install-action-btn" id="installBtn">Add</button>
+    <button class="install-dismiss-btn" id="installDismiss" aria-label="Dismiss">✕</button>
+  </div>
+
+  <script src="js/calculator.js?v=8"></script>
+  <script>
+    // PWA: service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('./sw.js').catch(function () {});
+      });
+    }
+
+    // PWA: install prompt
+    var deferredPrompt = null;
+    var installBanner  = document.getElementById('installBanner');
+    var installBtn     = document.getElementById('installBtn');
+    var installDismiss = document.getElementById('installDismiss');
+    var installText    = document.getElementById('installText');
+    var isStandalone   = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
+    var isIOS          = /iphone|ipad|ipod/i.test(navigator.userAgent);
+
+    if (!isStandalone) {
+      if (isIOS) {
+        installText.textContent = 'Tap Share then "Add to Home Screen"';
+        installBtn.style.display = 'none';
+        installBanner.classList.add('show');
+      }
+    }
+
+    window.addEventListener('beforeinstallprompt', function (e) {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBanner.classList.add('show');
+    });
+
+    installBtn.addEventListener('click', function () {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(function () {
+          deferredPrompt = null;
+          installBanner.classList.remove('show');
+        });
+      }
+    });
+
+    installDismiss.addEventListener('click', function () {
+      installBanner.classList.remove('show');
+    });
+  </script>
 </body>
 </html>
