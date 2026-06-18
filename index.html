@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="description" content="Calculate your stop price instantly. Protect your trading gains with a smart exit price based on your cost base, current price, and profit lock-in %.">
-  <meta property="og:title" content="Stop Price Calculator">
-  <meta property="og:description" content="Protect your trading gains with a smart stop price calculator.">
+  <meta name="description" content="Free calculator for stock traders. Enter your cost base and current price to instantly get your stop-loss price and the exact trailing stop % to enter in your broker.">
+  <meta property="og:title" content="Stop Loss & Trailing Stop Calculator — Free for Stock Traders">
+  <meta property="og:description" content="Instantly calculate your stop-loss price and trailing stop percentage. Free tool — enter cost base, current price, and profit lock-in %.">
   <meta property="og:type" content="website">
-  <title>Stop Price Calculator</title>
+  <title>Stop Loss & Trailing Stop Calculator — Free for Stock Traders</title>
 
   <!-- PWA -->
   <link rel="manifest" href="manifest.json">
@@ -29,14 +29,27 @@
   ═══════════════════════════════════════════════════════
   -->
 
+  <!-- Structured data: tells Google this is a free web app tool -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Stop Loss & Trailing Stop Calculator",
+    "description": "Free calculator for stock traders. Enter your cost base and current price to instantly get your stop-loss price and the exact trailing stop percentage to enter in your broker.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.0.0/tabler-icons.min.css">
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
   <div class="app">
     <div class="header">
-      <h1><i class="ti ti-chart-line" aria-hidden="true"></i>Stop Price Calculator</h1>
-      <p>Protect your gains with a smart exit price</p>
+      <h1><i class="ti ti-chart-line" aria-hidden="true"></i>Stop Loss & Trailing Stop Calculator</h1>
+      <p>Get your stop-loss price and trailing stop % in seconds</p>
     </div>
 
     <div class="card">
@@ -148,6 +161,23 @@
       </button>
     </div>
 
+    <section class="seo-blurb">
+      <h2>How it works</h2>
+      <p>
+        Enter your <strong>cost base</strong> (what you paid per share) and the
+        <strong>current price</strong>, then choose how much of your profit to
+        lock in. The calculator gives you two numbers to use in your broker:
+      </p>
+      <ul>
+        <li><strong>Stop-loss price</strong> — the limit price for a stop-loss order</li>
+        <li><strong>Trailing stop %</strong> — the percentage to enter in a trailing stop order</li>
+      </ul>
+      <p>
+        Both numbers update instantly as you adjust the profit lock-in slider.
+        Use the <strong>Copy</strong> buttons to paste directly into your broker's order form.
+      </p>
+    </section>
+
     <!--
     ═══════════════════════════════════════════════════════
     GOOGLE ADSENSE AD UNIT — uncomment when approved
@@ -180,7 +210,7 @@
     <button class="install-dismiss-btn" id="installDismiss" aria-label="Dismiss">✕</button>
   </div>
 
-  <script src="js/calculator.js?v=9"></script>
+  <script src="js/calculator.js?v=10"></script>
   <script>
     // PWA: service worker
     if ('serviceWorker' in navigator) {
