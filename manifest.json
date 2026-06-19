@@ -4,14 +4,20 @@
   "description": "Calculate your stop price and trailing stop % to protect your trading gains.",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#f0f0ed",
+  "background_color": "#378ADD",
   "theme_color": "#378ADD",
   "icons": [
+    {
+      "src": "icon.avif",
+      "sizes": "512x512",
+      "type": "image/avif",
+      "purpose": "any maskable"
+    },
     {
       "src": "icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
