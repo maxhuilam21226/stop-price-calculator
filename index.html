@@ -57,7 +57,7 @@
         <label for="costBase"><i class="ti ti-building-bank" aria-hidden="true"></i>Cost base</label>
         <div class="input-wrap">
           <span class="input-prefix">$</span>
-          <input type="number" id="costBase" placeholder="0.00" min="0" step="0.01" inputmode="decimal" autocomplete="off">
+          <input type="number" id="costBase" placeholder="0.00" min="0" max="99999999" step="0.01" inputmode="decimal" autocomplete="off">
         </div>
       </div>
 
@@ -65,7 +65,7 @@
         <label for="currentPrice"><i class="ti ti-trending-up" aria-hidden="true"></i>Current price</label>
         <div class="input-wrap">
           <span class="input-prefix">$</span>
-          <input type="number" id="currentPrice" placeholder="0.00" min="0" step="0.01" inputmode="decimal" autocomplete="off">
+          <input type="number" id="currentPrice" placeholder="0.00" min="0" max="99999999" step="0.01" inputmode="decimal" autocomplete="off">
         </div>
       </div>
 
@@ -210,7 +210,7 @@
     <button class="install-dismiss-btn" id="installDismiss" aria-label="Dismiss">✕</button>
   </div>
 
-  <script src="js/calculator.js?v=11"></script>
+  <script src="js/calculator.js?v=12"></script>
   <script>
     // PWA: service worker
     if ('serviceWorker' in navigator) {

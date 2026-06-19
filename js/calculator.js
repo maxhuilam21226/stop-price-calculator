@@ -74,7 +74,7 @@
     var sharesRaw = numSharesEl.value.trim();
     var shares  = (sharesRaw === '' || isNaN(parseFloat(sharesRaw))) ? 1 : parseFloat(sharesRaw);
 
-    if (isNaN(cost) || isNaN(current) || cost <= 0 || current <= 0) {
+    if (isNaN(cost) || isNaN(current) || cost <= 0 || current <= 0 || cost > 99999999 || current > 99999999) {
       resultCard.classList.remove('show');
       return;
     }
