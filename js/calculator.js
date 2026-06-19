@@ -86,7 +86,10 @@
 
     flashUpdate();
 
-    resultPriceEl.textContent = '$' + stop.toFixed(2);
+    var priceStr = '$' + stop.toFixed(2);
+    resultPriceEl.textContent = priceStr;
+    var plen = priceStr.length;
+    resultPriceEl.style.fontSize = plen <= 8 ? '' : plen <= 10 ? '36px' : plen <= 12 ? '28px' : '22px';
     rCostEl.textContent       = '$' + cost.toFixed(2);
     rCurrentEl.textContent    = '$' + current.toFixed(2);
     rSafeEl.textContent       = safeline + '%';
